@@ -4,7 +4,6 @@
 package nonogramProjectv1;
 
 import java.io.File;
-import java.util.IllegalFormatException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,17 +22,13 @@ public class NonogramDriver {
 
 		String filepath = FileFinder.getTextFile();
 
-		System.out.println( filepath  );
-
 		// convert the text file into a 2D matrix
 		Nonogram n = textTo2DArray( filepath );
 
 
 		String name =  filepath.substring( filepath.lastIndexOf("\\"),
 				filepath.length()-4 );
-		System.out.println( "A\t"+filepath );
-
-		n.name = filepath;
+		n.name = name;
 
 		// print the empty nonogram
 		//System.out.println( n.toString( ) +"\n" );
@@ -149,7 +144,6 @@ public class NonogramDriver {
 					throw new Exception("Malformation on line " +
 							(1 + lengthX + lengthY + (beforeX?0:1) ) + ".\n"+line);
 				}else {
-					System.out.println( "Y is here"+line );
 					beforeX = false;
 				}
 			}
@@ -171,8 +165,6 @@ public class NonogramDriver {
 
 		// this is "X"
 		sc.nextLine();
-
-		System.out.println( "lengthX\t"+lengthX );
 
 		// iterate through each col
 		for( int i = 0; i < lengthX; i++ ) {
