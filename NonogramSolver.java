@@ -1,5 +1,5 @@
 // Code written by Ryan WH Thomas
-// Last updated: 2/8/2019
+// Last updated: 2/9/2019
 
 package nonogramProjectv1;
 
@@ -781,22 +781,6 @@ public class NonogramSolver {
 		}
 
 		return Arrays.equals( solution, parsed );
-	}
-
-	private static int permutations(int numOfBlock, int buffer){
-		if( numOfBlock < 0 || buffer < 0) return -1;
-
-		// if buffer is 0, then there is only 1 solution, etc
-		if( numOfBlock == 1) return buffer+1;
-
-		// if buffer is 0, then there is only 1 solution
-		if( buffer == 0 ) return 1;
-
-		int b = permutations(numOfBlock, buffer-1);
-		int a = permutations(numOfBlock-1, buffer);
-
-		if( a > Integer.MAX_VALUE - b ) return -1;
-		else return a + b;
 	}
 
 	@Override

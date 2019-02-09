@@ -1,5 +1,5 @@
 // Code written by Ryan WH Thomas
-// Last updated: 2/8/2019
+// Last updated: 2/9/2019
 
 package nonogramProjectv1;
 
@@ -117,19 +117,23 @@ public class FileFinder {
 					System.out.println( toPrint );
 					System.out.println( "Which file do you want to select?" );
 
-					index = sc.nextInt()-1;
+					String tempInput = sc.nextLine();
 
+					try { index = Integer.parseInt( tempInput ); }
+					catch (NumberFormatException e) { index = -1; }
 
-					while( 0 > index && index >= filesArr.length ) {
+					while( index < 1 || filesArr.length < index ) {
 						System.out.println( "\nEnter a number between 1 and "+(filesArr.length)+"." );
-						index = sc.nextInt()-1;
+						tempInput = sc.nextLine();
+						try { index = Integer.parseInt( tempInput ); }
+						catch (NumberFormatException e) { index = -1; }
 					}
 				}else {
 					System.out.println( "Only one file in subfolder. File chosen automatically." );
-					index = 0;
+					index = 1;
 				}
 
-				filename = filesArr[index];
+				filename = filesArr[index - 1];
 				System.out.println( "File \""+filename + "\" at "+subfolder+" was chosen.");
 			}
 			else{
@@ -146,18 +150,29 @@ public class FileFinder {
 					System.out.println( toPrint );
 					System.out.println( "Which folder do you want to enter?" );
 
-					index = sc.nextInt()-1;
+					String tempInput = sc.nextLine();
 
-					while( 0 > index && index >= foldersArr.length ) {
+					try {
+						index = Integer.parseInt( tempInput );
+					}
+					catch (NumberFormatException e)
+					{
+						index = -1;
+					}
+
+					while( index < 1 || foldersArr.length < index ) {
 						System.out.println( "\nEnter a number between 1 and "+(foldersArr.length)+"." );
-						index = sc.nextInt()-1;
+						tempInput = sc.nextLine();
+						try { index = Integer.parseInt( tempInput ); }
+						catch (NumberFormatException e) { index = -1; }
+
 					}
 				}else {
 					System.out.println( "Only one folder in subfolder. Folder chosen automatically." );
-					index = 0;
+					index = 1;
 				}
 
-				subfolder += "\\"+foldersArr[index];
+				subfolder += "\\"+foldersArr[index - 1];
 
 			}
 

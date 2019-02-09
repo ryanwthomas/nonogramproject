@@ -1,5 +1,5 @@
 // Code written by Ryan WH Thomas
-// Last updated: 2/8/2019
+// Last updated: 2/9/2019
 
 package nonogramProjectv1;
 
@@ -26,17 +26,12 @@ public class NonogramDriver {
 		Nonogram n = textTo2DArray( filepath );
 
 
-		String name =  filepath.substring( filepath.lastIndexOf("\\"),
+		String filename =  filepath.substring( filepath.lastIndexOf("\\"),
 				filepath.length()-4 );
-		n.name = name;
-
-		// print the empty nonogram
-		//System.out.println( n.toString( ) +"\n" );
+		n.name = filename;
 
 		NonogramSolver ns = new NonogramSolver(n);
-		//System.out.println( n.toString( ) +"\n" );
-
-		//long tStart = System.currentTimeMillis();
+		
 		long tStart = System.nanoTime();
 
 		if( debug?true:false || ns.nonogramSolvable() ) {
@@ -44,7 +39,6 @@ public class NonogramDriver {
 
 			// start timer
 			tStart = System.nanoTime();
-			// System.out.println( (System.currentTimeMillis()-tStart)/1000.0);
 
 			while( ns.progressable ) {
 				if( ns.step() )
@@ -53,8 +47,6 @@ public class NonogramDriver {
 					System.out.println( "\ttime (min):\t"+
 							(System.nanoTime()-tStart)/(60.0*Math.pow(10, 9)) +"\n");
 			}
-			//	System.out.println( "\n"+ns );
-			//System.out.println("Stepped");
 		}
 		else
 			System.out.println( "Unsolvable" );
@@ -66,38 +58,6 @@ public class NonogramDriver {
 				(System.nanoTime()-tStart)/Math.pow(10, 9) + " s");
 		System.out.println( "\n"+ns );
 
-
-		//	tileDescription( ns.getNonogram() );
-	}
-
-	public static void tileDescription(Nonogram n ) {
-		String toReturn = "";
-
-		String raw = n.toString();
-
-		System.out.println("A");
-
-
-		raw = raw.replace("X",  " Tile.FILL , ");
-
-		System.out.println( raw +"\n");
-
-		raw = raw.replace("=",  " Tile.UNKN , ");
-
-		System.out.println( raw +"\n");
-
-		raw = raw.replace("o", " Tile.XED  , ");
-
-		System.out.println( raw +"\n");
-
-		raw = raw.replace("\n", "}\n{");
-
-		raw = "{" + raw + "}";
-
-		raw = raw.replace(", }", "} ,");
-
-
-		System.out.println( "{"+raw+"};" );
 	}
 
 	/*
@@ -161,7 +121,10 @@ public class NonogramDriver {
 		sc = new Scanner( myText );
 
 		int[][] x2dArray = new int[lengthX][];
-		int[][] y2dArray = new int[lengthX][];
+		int[][] y2dArray = new int[lengthY][];
+		
+		System.out.println( "X length\t"+ x2dArray.length );
+		System.out.println( "Y length\t"+ y2dArray.length );
 
 		// this is "X"
 		sc.nextLine();
@@ -218,7 +181,7 @@ public class NonogramDriver {
 		}
 
 		sc.close( );
-
+		
 		return new Nonogram( x2dArray, y2dArray );
 	}
 

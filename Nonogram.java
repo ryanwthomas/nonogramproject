@@ -1,7 +1,9 @@
 // Code written by Ryan WH Thomas
-// Last updated: 2/8/2019
+// Last updated: 2/9/2019
 
 package nonogramProjectv1;
+
+import java.util.Arrays;
 
 public class Nonogram {
 
@@ -65,6 +67,8 @@ public class Nonogram {
 			if( tileLength( x_ids[x] ) > dim_y )
 				throw new DimensionException("Column "+(x+1)+"has ID is too big for column.");
 
+		System.out.println( "Alpha\t"+(y_ids==null));
+		
 		for(int y = 0; y < dim_y; y++)
 			if( tileLength( y_ids[y] ) > dim_x )
 				throw new DimensionException("Row "+(y+1)+" has ID is too big for row.");
@@ -172,6 +176,13 @@ public class Nonogram {
 	 * The number of empty tiles is equal to the number of blocks minus 1.
 	 * */
 	private static int tileLength(int[] num){
+		
+		if( num != null )
+		System.out.println( Arrays.toString( num ) );
+		else
+			System.out.println( "NULL" );
+		
+		
 		int sum = 0;
 		for(int x : num)
 			sum += x; // add the width of the num
