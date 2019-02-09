@@ -1,4 +1,7 @@
-package NonogramProject5;
+// Code written by Ryan WH Thomas
+// Last updated: 2/8/2019
+
+package nonogramProjectv1;
 
 public class Nonogram {
 

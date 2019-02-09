@@ -1,10 +1,13 @@
-package NonogramProject5;
+// Code written by Ryan WH Thomas
+// Last updated: 2/8/2019
+
+package nonogramProjectv1;
 import static org.junit.Assert.*;
 
-import NonogramProject5.Nonogram.DimensionException;
-import NonogramProject5.Nonogram.Tile;
-
 import org.junit.Test;
+
+import nonogramProjectv1.Nonogram.DimensionException;
+import nonogramProjectv1.Nonogram.Tile;
 
 public class NonogramTests {
 
@@ -15,11 +18,8 @@ public class NonogramTests {
 				//"Normal\\eggplant";
 				"Testing\\helmet";
 
-		Nonogram n = new Nonogram(
-				NonogramDriver.textTo2DArray(str+" x.txt"),
-				NonogramDriver.textTo2DArray(str+" y.txt")
-				
-				);
+		Nonogram n = 
+				NonogramDriver.textTo2DArray(str+".txt");
 
 		Tile[][] nonogramCopy = 
 			{{ Tile.XED  ,   Tile.UNKN ,   Tile.UNKN ,   Tile.XED  ,   Tile.XED  ,   Tile.XED  ,   Tile.XED  ,   Tile.FILL ,   Tile.XED  ,   Tile.XED  ,   Tile.XED  ,   Tile.XED  ,   Tile.UNKN ,   Tile.UNKN ,   Tile.XED  } ,

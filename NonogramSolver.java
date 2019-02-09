@@ -1,4 +1,7 @@
-package NonogramProject5;
+// Code written by Ryan WH Thomas
+// Last updated: 2/8/2019
+
+package nonogramProjectv1;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -6,8 +9,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.IntStream;
 
-import NonogramProject5.Nonogram;
-import NonogramProject5.Nonogram.Tile;
+import nonogramProjectv1.Nonogram;
+import nonogramProjectv1.Nonogram.Tile;
 
 public class NonogramSolver {
 

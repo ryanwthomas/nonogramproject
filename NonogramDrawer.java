@@ -1,4 +1,7 @@
-package NonogramProject5;
+// Code written by Ryan WH Thomas
+// Last updated: 2/8/2019
+
+package nonogramProjectv1;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import NonogramProject5.Nonogram.Tile;
+import nonogramProjectv1.Nonogram.Tile;
 
 public class NonogramDrawer {
 
