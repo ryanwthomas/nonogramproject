@@ -15,9 +15,6 @@ public class NonogramDriver {
 
 	static final boolean debug = false;
 
-
-	static int mode = 0;
-
 	public static void main(String[] args) throws Exception {
 
 		String filepath = FileFinder.getTextFile();
@@ -34,8 +31,9 @@ public class NonogramDriver {
 		
 		long tStart = System.nanoTime();
 
-		if( debug?true:false || ns.nonogramSolvable() ) {
-			System.out.println( "Solvable" );
+		// see if nonogram can be solved
+		if( debug || ns.nonogramSolvable() ) {
+			System.out.println( debug?"Debugging":"Solvable" );
 
 			// start timer
 			tStart = System.nanoTime();
@@ -43,7 +41,7 @@ public class NonogramDriver {
 			while( ns.progressable ) {
 				if( ns.step() )
 				{}
-				if( ns.debug )
+				if( debug )
 					System.out.println( "\ttime (min):\t"+
 							(System.nanoTime()-tStart)/(60.0*Math.pow(10, 9)) +"\n");
 			}
@@ -51,7 +49,7 @@ public class NonogramDriver {
 		else
 			System.out.println( "Unsolvable" );
 
-		if( ns.printNonogram ||  mode == 2)
+		if( printNonogram )
 			NonogramDrawer.saveImage(ns.getNonogram(), n.name+"_FIN");
 
 		System.out.println( "\nTime (s):\t"+
@@ -85,7 +83,7 @@ public class NonogramDriver {
 		while( sc.hasNextLine( ) ) {
 			String line = sc.nextLine();
 
-			String pattern = "[1-9](\\d)*( [1-9](\\d)*)*$";
+			String pattern = "^[1-9][0-9]*((\\s)+[1-9][0-9]*)*$";
 
 			// Create a Pattern object
 			Pattern r = Pattern.compile(pattern);
