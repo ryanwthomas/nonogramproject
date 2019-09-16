@@ -1,4 +1,4 @@
-# nonogramproject
+# Nonogram Project
 After solving many nonograms by hand and getting bored with how mechanical it felt, I wondered how efficiently a computer could solve a nonogram. There are other nonograms solvers on the Internet, but I wanted to try to implement my own.
 
 The structure of the files works as such:
@@ -21,3 +21,5 @@ And the row's descriptor was [... 4], then the the row can be futher filled in a
 ... ? ? X X X ?
 
 This new method may no fix the primary issue with scalabiltiy, but it should at least allow the program to more quickly solve easier nonograms, regardless of the size of the board.
+
+(This README file is currently incomplete.)
