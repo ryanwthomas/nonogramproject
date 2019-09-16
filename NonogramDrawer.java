@@ -73,8 +73,10 @@ public class NonogramDrawer {
 						BufferedImage.TYPE_INT_RGB);
 				Graphics2D graphics2D = image.createGraphics();
 				frame.paint(graphics2D);	
-				ImageIO.write(image,"png", new File("C:\\Users\\ryanw\\eclipse-workspace\\workspaceSepThird\\bin"+
-				"\\Nonogram Pictures\\"
+				
+				String curDir = System.getProperty("user.dir");
+
+				ImageIO.write(image,"png", new File(curDir+"\\output\\"
 						//+System.currentTimeMillis()
 						+"nonogram_"
 						+(nameFirst?name:"")
@@ -82,6 +84,7 @@ public class NonogramDrawer {
 						+(!nameFirst?("_"+name):"")
 						+".png"
 						));
+
 				//frame.setVisible(false);
 				frame.dispose();
 			}
