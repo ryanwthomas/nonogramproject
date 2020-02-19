@@ -10,7 +10,14 @@ The structure of the files works as such:
 - <b>NonogramDrawer</b>: Creates and saves images of the current Nonogram. May be called after every step in NonogramSolver, or only after the Nonogram is solved.
 
 Currently this project is under major renovations. I've designed a new approach for NonogramSolver. The previous design (while it worked efficienctly on most nonograms meant for humans to solve) didn't scale properly for a number of reasons.
-<ul>
-  <li>First, the Solver analyzed specific cells in the nonogram, </li>
-</ul>
+<ol>
+  <li>The lineSolvable() bool function was inefficient, and hanged on invalid cases for too long. This is highly problematic because this function is called on each step. A new algorithm has been designed to replace this problem.</li>
+  <li>The algorithm would analyze cells on the board where no changed had occured in its column or row. Logically, if the cell wasn't filled and its slices didn't change, it will remain unsolvable. Now only areas of the board where a change has occured will be checked.</li>
+<li>When checking for a contradiction, a solution must be found to prove no contradiction occurs, but this solution isn't stored anywhere. If the slice solution is the right-most solution found, the program will have to adjust all the blocks right every time step is called. The current program remembers previous solutions, creating an ammortized solution.</li>
+  <li>Solver tracked all unsolved cells in the nonogram and iterated over them in a loop until they were all gone (or they had all been checked, meaning no progress was able to be made). This ignores the fact that often larger clusters of cells will be solved together, and addressing each individual cell is often redundant. The new algorithm address slices instead of cells, which allows for larger clusters of cells to be solved at once.</li>
+</ol>
+
+Most testing needs to be done before I can definitely say my design will return faster results, but the current results are promising. It will take a lot of work to switch from my "find a contradiction" method to "find all possibilities" method, but I'm passionate about this project, and as soon as I have time I will implement it to the best of my ability.
+
+Thank you for reading!
 
